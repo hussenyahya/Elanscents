@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Élan Scents</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Georgia, serif; margin:0; background:#111; color:#fff; }
+    a { text-decoration: none; color: inherit; }
+    nav { display:flex; justify-content:space-between; align-items:center; padding:20px; position:sticky; top:0; background:rgba(0,0,0,0.8); z-index:100; }
+    nav .logo { font-size:1.5rem; font-weight:bold; }
+    nav ul { display:flex; list-style:none; gap:20px; }
+    nav ul li:hover { color:#f4c542; cursor:pointer; }
+    .hero { background:url('home-hero.jpg') center/cover no-repeat; text-align:center; padding:150px 20px; position:relative; }
+    .hero::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.6); }
+    .hero h1, .hero p { position:relative; z-index:1; text-shadow:2px 2px 5px #000; }
+    .hero h1 { font-size:2.5rem; }
+    .hero p { margin-top:10px; font-size:1.2rem; }
+    .products { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:30px; padding:50px 20px; }
+    .card { background:#1a1a1a; padding:20px; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; text-align:center; }
+    .card:hover { transform:scale(1.05); box-shadow:0 10px 25px rgba(244,197,66,0.6); }
+    .card img { width:100%; border-radius:10px; margin-bottom:15px; }
+    footer { text-align:center; padding:20px; background:#111; font-size:0.9rem; }
+    @media(max-width:768px){nav ul{display:none}.hero{padding:100px 20px}}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <input
+    type="text"
+    id="searchInput"
+    placeholder="Search fragrance..."
+    onkeyup="searchPerfume()"
+    class="search-bar"
+  />
+  
+    <div class="logo"><a href="index.html">Élan Scents</a></div>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="designer.html">Designer</a></li>
+      <li><a href="niche.html">Niche</a></li>
+      <li><a href="signature.html">Signature</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Authentic Designer & Niche Fragrances</h1>
+    <p>Elevate your style with our premium, exclusive scents.</p>
+  </section>
+
+  <!-- Products Section (links to other pages) -->
+  <section class="products">
+    <div class="card" onclick="location.href='designer.html'">
+      <img src="designer-hero.jpg" alt="Designer Collection">
+      <h3>Designer Collection</h3>
+    </div>
+    <div class="card" onclick="location.href='niche.html'">
+      <img src="niche-hero.jpg" alt="Niche Collection">
+      <h3>Niche Collection</h3>
+    </div>
+    <div class="card" onclick="location.href='signature.html'">
+      <img src="signature-hero.jpg" alt="Signature Collection">
+      <h3>Signature Bottles</h3>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 Élan Scents. All rights reserved.</footer>
+
+</body>
+</html>
