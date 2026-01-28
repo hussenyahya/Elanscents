@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amouage Reflection Man | Élan Scents</title>
+
+<style>
+body{margin:0;font-family:'Segoe UI',Tahoma,Verdana,sans-serif;background:#000;color:#fff;overflow-x:hidden}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:#000;position:sticky;top:0;z-index:100}
+nav .logo a{font-size:1.8rem;font-family:Georgia,serif;font-weight:bold;text-decoration:none;color:#f4c542}
+nav ul{list-style:none;display:flex;gap:30px;margin:0;padding:0}
+nav ul li a{text-decoration:none;color:#fff;font-size:.9rem}
+nav ul li a:hover{color:#f4c542}
+
+/* CART ICON */
+.cart-icon{position:fixed;bottom:30px;right:30px;background:#111;border:2px solid #f4c542;border-radius:50%;width:45px;height:45px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:200}
+.cart-icon svg{width:25px;fill:#f4c542}
+.cart-dot{position:absolute;top:0;right:0;width:14px;height:14px;background:#ff3e3e;border-radius:50%;display:none;border:2px solid #000}
+
+/* MINI CART */
+.mini-cart{position:fixed;bottom:95px;right:30px;background:#111;border:1px solid #333;border-radius:12px;width:320px;display:none;flex-direction:column;padding:20px;z-index:300;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+.mini-cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.mini-cart-header span{color:#f4c542;font-weight:bold}
+.mini-cart-items{flex:1;overflow-y:auto}
+.mini-cart-item{display:flex;gap:15px;margin-bottom:15px;align-items:center;border-bottom:1px solid #222;padding-bottom:10px}
+.mini-cart-item img{width:50px;height:50px;object-fit:cover;border-radius:6px}
+.mini-cart-item b{color:#f4c542}
+.mini-cart-item button{background:none;border:none;color:#888;font-size:1.3rem;cursor:pointer}
+.mini-cart-item button:hover{color:#ff3e3e}
+#goToCart{background:#f4c542;border:none;padding:15px;border-radius:8px;font-weight:bold;cursor:pointer}
+
+/* PRODUCT */
+.container{max-width:1200px;margin:auto;padding:60px 20px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+
+/* SLIDER */
+.slider{border-radius:20px;overflow:hidden;position:relative}
+.slider-track{display:flex;transition:transform .4s ease}
+.slider img{width:100%;flex-shrink:0}
+.slider button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.6);border:none;color:#fff;font-size:2rem;padding:10px;border-radius:50%;cursor:pointer}
+.prev{left:10px}
+.next{right:10px}
+
+/* INFO */
+.info h1{font-size:3.2rem;font-family:Georgia,serif;margin:0}
+.price{color:#f4c542;font-size:2rem;margin:20px 0}
+.desc{color:#ccc;line-height:1.8;margin-bottom:40px}
+.add-btn{background:#f4c542;color:#000;border:none;padding:20px 60px;border-radius:10px;font-size:1.1rem;font-weight:bold;cursor:pointer}
+
+/* FLYING IMG */
+.flying-img{position:fixed;width:80px;height:80px;border-radius:10px;pointer-events:none;transition:all .9s cubic-bezier(.175,.885,.32,1.275);border:2px solid #f4c542;z-index:9999}
+
+@media(max-width:900px){.container{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html">Élan Scents</a></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="designer.html">Designer</a></li>
+    <li><a href="niche.html">Niche</a></li>
+    <li><a href="signature.html">Signature</a></li>
+  </ul>
+</nav>
+
+<!-- CART -->
+<div class="cart-icon" id="cartIcon">
+<svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.6-1.35 2.45c-.16.28-.25.6-.25.95 0 1.1.9 2 2 2h12v-2H7.4l.9-1.6h7.45c.75 0 1.4-.4 1.75-1l3.6-6.5c.08-.15.12-.3.12-.5 0-.55-.45-1-1-1H5.2L4.3 2H1z"/></svg>
+<div class="cart-dot" id="cartDot"></div>
+</div>
+
+<!-- MINI CART -->
+<div class="mini-cart" id="miniCart">
+  <div class="mini-cart-header">
+    <span>Your Cart</span>
+    <button onclick="miniCart.style.display='none'">&times;</button>
+  </div>
+  <div class="mini-cart-items" id="miniCartItems"></div>
+ <!-- Checkout button linking to the main cart page -->
+ <button id="goToCart" onclick="window.location.href='cart.html'">Checkout</button>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+<div class="slider">
+  <div class="slider-track" id="track">
+    <img src="niche4.jpg">
+    <img src="byredo.jpg">
+  </div>
+  <button class="prev" onclick="slide(-1)">❮</button>
+  <button class="next" onclick="slide(1)">❯</button>
+</div>
+
+<div class="info">
+  <h1>Byredo Gypsy</h1>
+  <div class="price">600 EGP</div>
+  <p class="desc">
+    An elegant and refined floral-woody fragrance.
+    White florals, sandalwood, and cedar blend with subtle spices,
+    creating a smooth, luxurious, and timeless signature.
+  </p>
+  <button class="add-btn"
+    onclick="addToCart(event,'Byredo Gypsy','niche4.jpg',600)">
+    Add to Cart
+  </button>
+</div>
+
+</div>
+
+<script>
+const KEY="elan_scents_cart"
+const getCart=()=>JSON.parse(localStorage.getItem(KEY)||"[]")
+const saveCart=c=>localStorage.setItem(KEY,JSON.stringify(c))
+
+function updateUI(){
+  const cart=getCart()
+  cartDot.style.display=cart.length?"block":"none"
+  miniCartItems.innerHTML=""
+  if(!cart.length){
+    miniCartItems.innerHTML="<p style='color:#555;text-align:center'>Empty Cart</p>"
+    return
+  }
+  cart.forEach((i,idx)=>{
+    miniCartItems.innerHTML+=`
+    <div class="mini-cart-item">
+      <img src="${i.img}">
+      <div><p>${i.name}</p><b>$${i.price}</b></div>
+      <button onclick="removeItem(${idx})">&times;</button>
+    </div>`
+  })
+}
+
+function addToCart(e,name,img,price){
+  const cart=getCart()
+  cart.push({name,img,price})
+  saveCart(cart)
+
+  const f=document.createElement("img")
+  f.src=img
+  f.className="flying-img"
+  document.body.appendChild(f)
+
+  const s=e.target.getBoundingClientRect()
+  const c=cartIcon.getBoundingClientRect()
+  f.style.left=s.left+"px"
+  f.style.top=s.top+"px"
+
+  setTimeout(()=>{
+    f.style.left=c.left+"px"
+    f.style.top=c.top+"px"
+    f.style.transform="scale(.1)"
+    f.style.opacity=0
+  },50)
+
+  setTimeout(()=>{f.remove();updateUI()},900)
+}
+
+function removeItem(i){
+  const cart=getCart()
+  cart.splice(i,1)
+  saveCart(cart)
+  updateUI()
+}
+
+cartIcon.onclick=()=>{
+  miniCart.style.display=miniCart.style.display==="flex"?"none":"flex"
+  updateUI()
+}
+
+/* SLIDER */
+let index=0
+function slide(d){
+  const total=track.children.length
+  index+=d
+  if(index<0)index=total-1
+  if(index>=total)index=0
+  track.style.transform=`translateX(-${index*100}%)`
+}
+
+updateUI()
+</script>
+
+</body>
+</html>

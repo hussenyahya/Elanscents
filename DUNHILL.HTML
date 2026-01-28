@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUNHILL DESIRE RED | Élan Scents</title>
+<style>
+body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #000; position: sticky; top: 0; z-index: 100; }
+nav .logo a { font-size: 1.8rem; font-family: Georgia, serif; font-weight: bold; text-decoration: none; color: #f4c542; }
+nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; }
+nav ul li a { text-decoration: none; color: #fff; font-size: 0.9rem; transition: 0.3s; }
+nav ul li a:hover { color: #f4c542; }
+
+/* CART */
+.cart-icon { position: fixed; bottom: 30px; right: 30px; cursor: pointer; z-index: 200; background: #111; padding: 12px; border-radius: 50%; border: 2px solid #f4c542; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+.cart-icon:hover { transform: scale(1.1); background: #222; }
+.cart-icon svg { width: 25px; height: 25px; fill: #f4c542; }
+.cart-dot { position: absolute; top: 0; right: 0; width: 14px; height: 14px; background: #ff3e3e; border-radius: 50%; display: none; border: 2px solid #000; }
+
+/* MINI CART */
+.mini-cart { position: fixed; bottom: 95px; right: 30px; background: #111; border: 1px solid #333; border-radius: 12px; width: 320px; display: none; flex-direction: column; padding: 20px; max-height: 400px; z-index: 300; box-shadow: 0 15px 50px rgba(0,0,0,0.9); }
+.mini-cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.mini-cart-header span { font-weight: bold; color: #f4c542; font-size: 1.1rem; }
+.mini-cart-items-container { overflow-y: auto; flex-grow: 1; margin-bottom: 20px; }
+.mini-cart-item { display: flex; gap: 15px; margin-bottom: 15px; align-items: center; border-bottom: 1px solid #222; padding-bottom: 10px; }
+.mini-cart-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 6px; }
+.mini-cart-item .details { flex: 1; }
+.mini-cart-item .details p { margin: 0; font-size: 0.9rem; }
+.mini-cart-item .details b { color: #f4c542; }
+.mini-cart-item button { background: none; border: none; color: #888; cursor: pointer; font-size: 1.2rem; }
+.mini-cart-item button:hover { color: #ff3e3e; }
+
+#goToCart { background: #f4c542; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; color: #000; font-size: 1rem; }
+#closeMiniCart { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; line-height: 1; }
+
+/* PRODUCT PAGE */
+.container { max-width: 1200px; margin: auto; padding: 60px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+/* SLIDER */
+.slider { border-radius: 20px; overflow: hidden; position: relative; }
+.slider-track { display: flex; transition: transform 0.4s ease; }
+.slider img { width: 100%; flex-shrink: 0; height: auto; }
+.slider button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: #fff; font-size: 2rem; padding: 10px; cursor: pointer; border-radius: 50%; }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.info h1 { margin-top: 0; font-size: 3.5rem; font-family: Georgia, serif; }
+.price { font-size: 2rem; color: #f4c542; margin-bottom: 20px; font-weight: bold; }
+.desc { color: #ccc; line-height: 1.8; font-size: 1.1rem; margin-bottom: 40px; }
+
+.add-btn { background: #f4c542; color: #000; padding: 20px 60px; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; max-width: 400px; }
+.add-btn:hover { background: #fff; transform: translateY(-3px); }
+
+.flying-img { position: fixed; width: 80px; height: 80px; border-radius: 10px; z-index: 9999; pointer-events: none; transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275); object-fit: cover; border: 2px solid #f4c542; }
+
+@media(max-width: 900px) { .container { grid-template-columns: 1fr; padding: 20px; } .info h1 { font-size: 2.5rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="#">Élan Scents</a></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="designer.html">Designer</a></li>
+    <li><a href="niche.html">Niche</a></li>
+    <li><a href="signature.html">Signature</a></li>
+  </ul>
+</nav>
+
+<div class="cart-icon" id="cartIcon">
+  <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+  <div class="cart-dot" id="cartDot"></div>
+</div>
+
+<div class="mini-cart" id="miniCart">
+  <div class="mini-cart-header">
+    <span>Your Cart</span>
+    <button id="closeMiniCart">&times;</button>
+  </div>
+  <div class="mini-cart-items-container" id="miniCartItems"></div>
+ <!-- Checkout button linking to the main cart page -->
+ <button id="goToCart" onclick="window.location.href='cart.html'">Checkout</button>
+</div>
+
+<div class="container">
+  <!-- SLIDER -->
+  <div class="slider" id="slider">
+    <div class="slider-track" id="track">
+      <img src="designer21.jpg" alt="DUNHILL DESIRE RED bottle">
+      <img src="RED ACCORDS.jpeg" alt="Dior Sauvage accords">
+    </div>
+    <button class="prev" onclick="slide(-1)">❮</button>
+    <button class="next" onclick="slide(1)">❯</button>
+  </div>
+
+  <!-- INFO -->
+  <div class="info">
+    <h1>DUNHILL DESIRE RED</h1>
+    <div class="price">600 EGP</div>
+    <p class="desc">
+      A radical creation inspired by wide-open spaces. Bright bergamot and spicy pepper create a bold masculine scent.
+    </p>
+    <button class="add-btn" onclick="addToCart(event,'DUNHILL RED','designer21.jpg', 600)">Add to Cart</button>
+  </div>
+</div>
+
+<script>
+// CART STORAGE
+const STORAGE_KEY = "elan_scents_cart";
+function getCart() { return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]"); }
+function saveCart(cart) { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }
+
+// UPDATE MINI CART
+function updateUI() {
+  const cart = getCart();
+  const dot = document.getElementById("cartDot");
+  const container = document.getElementById("miniCartItems");
+  dot.style.display = cart.length > 0 ? "block" : "none";
+  container.innerHTML = "";
+  if(cart.length===0) {
+    container.innerHTML = "<p style='text-align:center; color:#555; margin-top:50px;'>Empty Cart</p>";
+  } else {
+    cart.forEach((item,i)=>{
+      const div=document.createElement("div");
+      div.className="mini-cart-item";
+      div.innerHTML=`
+        <img src="${item.img}">
+        <div class="details"><p>${item.name}</p><b>$${item.price}</b></div>
+        <button onclick="removeItem(${i})">&times;</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+}
+
+// ADD ITEM
+function addToCart(event,name,img,price){
+  const cart = getCart();
+  cart.push({name,img,price});
+  saveCart(cart);
+
+  // Flying animation
+  const flying = document.createElement("img");
+  flying.src=img;
+  flying.className="flying-img";
+  document.body.appendChild(flying);
+  const start=event.target.getBoundingClientRect();
+  const end=document.getElementById("cartIcon").getBoundingClientRect();
+  flying.style.left=start.left+"px";
+  flying.style.top=start.top+"px";
+  setTimeout(()=>{
+    flying.style.left=(end.left-20)+"px";
+    flying.style.top=(end.top-20)+"px";
+    flying.style.transform="scale(0.1)";
+    flying.style.opacity="0";
+  },50);
+  setTimeout(()=>{ flying.remove(); updateUI(); },900);
+}
+
+// REMOVE ITEM
+function removeItem(index){ const cart=getCart(); cart.splice(index,1); saveCart(cart); updateUI(); }
+
+// CART ICON
+document.getElementById("cartIcon").addEventListener("click",()=>{
+  const mc=document.getElementById("miniCart");
+  const isOpen = mc.style.display==="flex";
+  mc.style.display=isOpen ? "none" : "flex";
+  if(!isOpen) updateUI();
+});
+document.getElementById("closeMiniCart").addEventListener("click",()=>{ document.getElementById("miniCart").style.display="none"; });
+
+// INITIAL
+updateUI();
+
+// SLIDER
+let index=0;
+const track=document.getElementById("track");
+function slide(dir){
+  const total = track.children.length;
+  index += dir;
+  if(index<0) index=total-1;
+  if(index>=total) index=0;
+  track.style.transform=`translateX(-${index*100}%)`;
+}
+// MOBILE SWIPE
+let startX=0;
+track.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
+track.addEventListener("touchend",e=>{
+  const endX=e.changedTouches[0].clientX;
+  if(startX-endX>50) slide(1);
+  if(endX-startX>50) slide(-1);
+});
+</script>
+
+</body>
+</html>

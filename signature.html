@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Signature Fragrances | Élan Scents</title>
+
+<style>
+body {
+  font-family: Georgia, serif;
+  margin: 0;
+  background: #111;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav ul li:hover {
+  color: #f4c542;
+}
+
+.search-bar {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.hero {
+  background: url("signature-hero.jpg") center/cover no-repeat;
+  text-align: center;
+  padding: 150px 20px;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero h1,
+.hero p {
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 5px #000;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 280px);
+  gap: 30px;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.perfume-card {
+  width: 280px;
+  height: 400px;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: not-allowed; /* disable clicking */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.perfume-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(244, 197, 66, 0.6);
+}
+
+.perfume-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover; /* ensures equal image size */
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.perfume-card h3 {
+  margin: 0 0 10px;
+}
+
+.perfume-card p {
+  margin: 0;
+  color: #ccc;
+}
+
+.coming-soon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  color: #f4c542;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  pointer-events: none;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+  .hero {
+    padding: 100px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <input type="text" id="searchInput" placeholder="Search fragrance..." onkeyup="searchPerfume()" class="search-bar" />
+  <div class="logo">
+    <a href="index.html">Élan Scents</a>
+  </div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="designer.html">Designer</a></li>
+    <li><a href="niche.html">Niche</a></li>
+    <li><a href="signature.html">Signature</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>Signature Fragrances</h1>
+  <p>Bold scents that define identity and presence.</p>
+</section>
+
+<section class="products">
+
+  <div class="perfume-card">
+    <img src="signature1.jpg" alt="Velvet Ember">
+    <h3>Velvet Ember</h3>
+    <p>????</p>
+    <div class="coming-soon">Coming Soon</div>
+  </div>
+
+  <div class="perfume-card">
+    <img src="signature2.jpg" alt="Pearl Bloom">
+    <h3>Pearl Bloom</h3>
+    <p>?????</p>
+    <div class="coming-soon">Coming Soon</div>
+  </div>
+
+  <div class="perfume-card">
+    <img src="signature3.jpg" alt="Eclipse Royal">
+    <h3>Eclipse Royal</h3>
+    <p>????</p>
+    <div class="coming-soon">Coming Soon</div>
+  </div>
+
+  <div class="perfume-card">
+    <img src="signature4.jpg" alt="Fresh Atlas">
+    <h3>Fresh Atlas</h3>
+    <p>????</p>
+    <div class="coming-soon">Coming Soon</div>
+  </div>
+
+  <div class="perfume-card">
+    <img src="signature5.jpg" alt="Leather Atlier">
+    <h3>Leather Atlier</h3>
+    <p>????</p>
+    <div class="coming-soon">Coming Soon</div>
+  </div>
+
+</section>
+
+<footer>
+  &copy; 2026 Élan Scents. All rights reserved.
+</footer>
+
+<script>
+function searchPerfume() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const perfumes = document.querySelectorAll(".perfume-card");
+
+  perfumes.forEach(perfume => {
+    const name = perfume.querySelector("h3").innerText.toLowerCase();
+    perfume.style.display = name.includes(input) ? "block" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
+

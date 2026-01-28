@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designer Fragrances | Élan Scents</title>
+<style>
+body{
+  font-family: Georgia, serif;
+  margin:0;
+  background:#111;
+  color:#fff;
+}
+
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px;
+  position:sticky;
+  top:0;
+  background:rgba(0,0,0,0.85);
+  z-index:100;
+}
+
+.logo{font-size:1.5rem;font-weight:bold;}
+
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:20px;
+}
+
+nav ul li:hover{color:#f4c542;cursor:pointer;}
+.search-bar{padding:8px 12px;border-radius:20px;border:none;outline:none;}
+
+/* HERO */
+.hero{
+  background:url('designer-hero.jpg') center/cover no-repeat;
+  text-align:center;
+  padding:150px 20px;
+  position:relative;
+}
+
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+}
+
+.hero h1,.hero p{
+  position:relative;
+  z-index:1;
+  text-shadow:2px 2px 5px #000;
+}
+
+.hero h1{font-size:2.5rem;}
+.hero p{margin-top:10px;font-size:1.2rem;}
+
+/* PRODUCTS GRID */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, 280px);
+  gap:30px;
+  padding:50px 20px;
+  justify-content:center;
+}
+
+/* CARD */
+.card{
+  background:#1a1a1a;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.5);
+  transition:transform 0.3s, box-shadow 0.3s, opacity 0.6s, transform 0.6s;
+  text-align:center;
+  height:420px;
+  display:flex;
+  flex-direction:column;
+  opacity:0; /* start invisible for animation */
+  transform: translateY(50px);
+}
+
+.card:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(244,197,66,0.6);
+}
+
+.card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:15px 15px 0 0;
+}
+
+.card-content{
+  padding:15px;
+  flex-grow:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.card h3{margin:0 0 10px;font-size:1.05rem;}
+.card p{margin:0;color:#ccc;}
+
+.card.show{
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:#111;
+  font-size:0.9rem;
+}
+
+@media(max-width:768px){
+  nav ul{display:none;}
+  .hero{padding:100px 20px;}
+}
+.add-perfume-wrapper{
+  display:flex;
+  justify-content:center;
+  margin:40px 0 10px;
+}
+
+.add-perfume-btn{
+  background:#25D366;
+  color:#000;
+  padding:14px 30px;
+  border-radius:30px;
+  font-size:1.1rem;
+  font-weight:bold;
+  transition:0.3s;
+  box-shadow:0 5px 20px rgba(37,211,102,0.4);
+}
+
+.add-perfume-btn:hover{
+  background:#1ebe5d;
+  transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<input type="text" id="searchInput" placeholder="Search fragrance..." onkeyup="searchPerfume()" class="search-bar">
+<div class="logo"><a href="index.html">Élan Scents</a></div>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="designer.html">Designer</a></li>
+<li><a href="niche.html">Niche</a></li>
+<li><a href="signature.html">Signature</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<h1>Designer Fragrances</h1>
+<p>Classic designer scents for elegance and style.</p>
+</section>
+
+<section class="products">
+  <div class="add-perfume-wrapper">
+    <a 
+      href="https://wa.me/201080026008?text=Hey%20I’d%20like%20to%20suggest%20a%20perfume%20to%20add%20to%20the%20website.%0A%0APerfume%20Name:%0ABrand:%0AAny%20details:"
+      target="_blank"
+      class="add-perfume-btn"
+    >
+      + Add a Perfume
+    </a>
+  </div>
+  
+<!-- All 19 perfumes -->
+<a href="dior-sauvage.html"><div class="card"><img src="designer1.jpg"><div class="card-content"><h3>Dior Sauvage</h3><p>600 EGP</p></div></div></a>
+<a href="bleu-de-chanel.html"><div class="card"><img src="designer2.jpg"><div class="card-content"><h3>Bleu de Chanel</h3><p>600 EGP</p></div></div></a>
+<a href="ysl-la-nuit.html"><div class="card"><img src="designer3.jpg"><div class="card-content"><h3>YSL La Nuit</h3><p>600 EGP</p></div></div></a>
+<a href="armani-code.html"><div class="card"><img src="designer4.jpg"><div class="card-content"><h3>Giorgio Armani Code</h3><p>600 EGP</p></div></div></a>
+<a href="tom-ford-noir.html"><div class="card"><img src="designer5.jpg"><div class="card-content"><h3>Tom Ford Noir</h3><p>600 EGP</p></div></div></a>
+<a href="Jaun Paul Gaultier Le Male Elixir.html"><div class="card"><img src="designer6.jpg"><div class="card-content"><h3>JPG Le Male Elixir</h3><p>600 EGP</p></div></div></a>
+<a href="ACQUA DI GIO.HTML"><div class="card"><img src="desiger8.jpg"><div class="card-content"><h3>Acqua Di Gio</h3><p>600 EGP</p></div></div></a>
+<a href="GENTLE MEN.HTML"><div class="card"><img src="designer9.jpg"><div class="card-content"><h3>Gentleman Givenchy</h3><p>600 EGP</p></div></div></a>
+<a href="VALENTINO BORN IN ROMA.HTML"><div class="card"><img src="designer10.jpg"><div class="card-content"><h3>Valentino Born In Roma</h3><p>600 EGP</p></div></div></a>
+<a href="versace eros.html"><div class="card"><img src="designer11.jpg"><div class="card-content"><h3>Versace Eros</h3><p>600 EGP</p></div></div></a>
+<a href="BVLGARI.HTML"><div class="card"><img src="designer12.jpg"><div class="card-content"><h3>Bvlgari Man In Black</h3><p>600 EGP</p></div></div></a>
+<a href="theone.html"><div class="card"><img src="designer13.jpg"><div class="card-content"><h3>D&G The One</h3><p>600 EGP</p></div></div></a>
+<a href="kayali.html"><div class="card"><img src="designer14.jpg"><div class="card-content"><h3>Kayali Vanilla</h3><p>600 EGP</p></div></div></a>
+<a href="Dior J'Adore.html"><div class="card"><img src="designer17.jpg"><div class="card-content"><h3>Dior J’Adore</h3><p>600 EGP</p></div></div></a>
+<a href="FARAWAY.HTML"><div class="card"><img src="designer19.jpg"><div class="card-content"><h3>Far Away Avon</h3><p>600 EGP</p></div></div></a>
+<a href="DIORMISSDIOR.HTML"><div class="card"><img src="designer20.jpg"><div class="card-content"><h3>Miss Dior</h3><p>600 EGP EGP</p></div></div></a>
+<a href="DUNHILL.HTML"><div class="card"><img src="designer21.jpg"><div class="card-content"><h3>Dunhill Desire Red</h3><p>600 EGP</p></div></div></a>
+<a href="YSLY.HTML"><div class="card"><img src="designer22.jpg"><div class="card-content"><h3>YSL Y</h3><p>550 EGP</p></div></div></a>
+<a href="jpgum.html"><div class="card"><img src="designer23.jpg"><div class="card-content"><h3>JPG Ultra Male</h3><p>600 EGP</p></div></div></a>
+
+</section>
+
+<footer>&copy; 2026 Élan Scents. All rights reserved.</footer>
+
+<script>
+// SEARCH FILTER
+function searchPerfume(){
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let cards = document.getElementsByClassName("card");
+  for(let i=0;i<cards.length;i++){
+    let title = cards[i].querySelector("h3").innerText.toLowerCase();
+    cards[i].parentElement.style.display = title.includes(input) ? "block" : "none";
+  }
+}
+
+// SCROLL ANIMATION
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.2});
+
+document.querySelectorAll('.card').forEach(card=>{
+  observer.observe(card);
+});
+</script>
+
+</body>
+</html>
